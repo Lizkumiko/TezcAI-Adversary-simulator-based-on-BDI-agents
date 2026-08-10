@@ -15,14 +15,25 @@ import agentspeak.runtime
 import agentspeak.stdlib
 from colorama import init, Fore, Style
 
-# Importar acciones del agente de red
+import events
+import ws_server
+
+# Agentes reactivos simples: ejecutan lo que un BDI les pide, no deliberan.
 import networkAgR
+import credAgR
+import initAgR
+
+# Agentes BDI: deliberan sobre metas y delegan en los reactivos.
+import agCredAccess
+import agInitialAccess
 
 # Inicializar colorama para colores en terminal
 init(autoreset=True)
 
-# Acciones del agente coordinador (discovery)
-actions = agentspeak.Actions(agentspeak.stdlib.actions)
+# Acciones del agente coordinador (agDiscovery). Es el único agente BDI cuyas
+# acciones viven en el entry point en vez de en su propio módulo, por ser
+# también el punto de arranque histórico del proyecto.
+actions = events.make_bdi_actions("agDiscovery")
 
 
 @actions.add_procedure(".creaArch", (str,))
@@ -71,6 +82,18 @@ def load_logo():
     return False
 
 
+# Agentes a cargar en el entorno: (archivo .asl, acciones del agente).
+# Reactivos primero (no dependen de nadie), BDI después (delegan en ellos).
+AGENTS_TO_LOAD = [
+    ("networkAgR.asl", networkAgR.actions),
+    ("credAgR.asl", credAgR.actions),
+    ("initAgR.asl", initAgR.actions),
+    ("agDiscovery.asl", actions),
+    ("agCredAccess.asl", agCredAccess.actions),
+    ("agInitialAccess.asl", agInitialAccess.actions),
+]
+
+
 def main():
     """Función principal que inicializa y ejecuta los agentes BDI"""
 
@@ -78,36 +101,28 @@ def main():
     if not load_logo():
         print_banner()
 
+    ws_server.start()
+    print(Fore.CYAN + "[*] Servidor WebSocket escuchando en ws://0.0.0.0:8765" + Style.RESET_ALL)
+
     print(Fore.CYAN + "[*] Inicializando entorno de agentes BDI..." + Style.RESET_ALL)
 
     # Crear entorno de ejecución
     env = agentspeak.runtime.Environment()
+    base_dir = os.path.dirname(__file__)
 
-    # Cargar agente de red (networkAgR) con sus acciones
-    network_agent_path = os.path.join(os.path.dirname(__file__), "networkAgR.asl")
-    try:
-        with open(network_agent_path) as source:
-            agents = env.build_agents(source, 1, networkAgR.actions)
-        print(Fore.GREEN + "[+] Agente de red (networkAgR) cargado" + Style.RESET_ALL)
-    except FileNotFoundError:
-        print(Fore.RED + f"[!] Error: No se encontró {network_agent_path}" + Style.RESET_ALL)
-        return
-    except Exception as e:
-        print(Fore.RED + f"[!] Error cargando agente de red: {e}" + Style.RESET_ALL)
-        return
-
-    # Cargar agente de descubrimiento (agDiscovery) con sus acciones
-    discovery_agent_path = os.path.join(os.path.dirname(__file__), "agDiscovery.asl")
-    try:
-        with open(discovery_agent_path) as source:
-            agents.append(env.build_agent(source, actions))
-        print(Fore.GREEN + "[+] Agente de descubrimiento (agDiscovery) cargado" + Style.RESET_ALL)
-    except FileNotFoundError:
-        print(Fore.RED + f"[!] Error: No se encontró {discovery_agent_path}" + Style.RESET_ALL)
-        return
-    except Exception as e:
-        print(Fore.RED + f"[!] Error cargando agente de descubrimiento: {e}" + Style.RESET_ALL)
-        return
+    agents = []
+    for filename, agent_actions in AGENTS_TO_LOAD:
+        agent_path = os.path.join(base_dir, filename)
+        try:
+            with open(agent_path) as source:
+                agents.append(env.build_agent(source, agent_actions))
+            print(Fore.GREEN + f"[+] Agente cargado: {filename}" + Style.RESET_ALL)
+        except FileNotFoundError:
+            print(Fore.RED + f"[!] Error: No se encontró {agent_path}" + Style.RESET_ALL)
+            return
+        except Exception as e:
+            print(Fore.RED + f"[!] Error cargando {filename}: {e}" + Style.RESET_ALL)
+            return
 
     print(Fore.CYAN + "[*] Ejecutando simulación..." + Style.RESET_ALL)
     print(Fore.CYAN + "=" * 60 + Style.RESET_ALL)

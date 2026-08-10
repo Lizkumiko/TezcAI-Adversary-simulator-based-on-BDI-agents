@@ -1,5 +1,77 @@
-172.20.15.132
-172.20.15.213
-172.20.15.242
-172.20.15.254
-172.20.15.85
+[
+  {
+    "ip": "192.168.100.1",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.102",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.171",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.187",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.227",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.23",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.250",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.45",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.5",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.55",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.58",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.59",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.78",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.82",
+    "status": "up",
+    "hostname": null
+  },
+  {
+    "ip": "192.168.100.84",
+    "status": "up",
+    "hostname": null
+  }
+]

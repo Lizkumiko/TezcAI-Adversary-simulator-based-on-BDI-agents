@@ -24,8 +24,14 @@ import json
 from netifaces import interfaces, ifaddresses, AF_INET, AF_LINK
 from ipaddress import IPv4Network, IPv4Interface
 
-actions = agentspeak.Actions(agentspeak.stdlib.actions)
+import events
+
+AGENT = "networkAgR"
 SISTEMA = platform.system()
+
+# Acciones .ev_* (reporte de inicio/resultado) ya ligadas al nombre de este
+# agente reactivo, más las acciones .whoami/.network_scanning/... de abajo.
+actions = events.make_reactive_actions(AGENT)
 
 
 class NetworkLocation:

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>TezcAI — Monitor de Simulación</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0e14;
+    --panel: #11151f;
+    --border: #232838;
+    --text: #d8dee9;
+    --muted: #6b7280;
+    --accent: #38bdf8;
+    --ok: #34d399;
+    --bad: #f87171;
+    --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header h1 {
+    font-size: 15px;
+    margin: 0;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  #status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  #status .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bad);
+    box-shadow: 0 0 6px var(--bad);
+  }
+  #status.connected .dot { background: var(--ok); box-shadow: 0 0 6px var(--ok); }
+  #status.connected { color: var(--ok); }
+
+  #url-box {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  #url-box input {
+    background: #0b0e14;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 12px;
+    width: 220px;
+  }
+  #url-box button {
+    background: var(--accent);
+    border: none;
+    color: #0b0e14;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+  .stat {
+    padding: 8px 16px;
+    border-right: 1px solid var(--border);
+    min-width: 100px;
+  }
+  .stat .n { font-size: 18px; font-weight: 700; color: var(--accent); }
+  .stat .l { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 0;
+    height: calc(100vh - 88px);
+  }
+  .col { overflow-y: auto; padding: 10px; }
+  .col h2 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin: 4px 0 10px;
+    position: sticky;
+    top: -10px;
+    background: var(--bg);
+    padding: 6px 0;
+  }
+  #findings-col { border-left: 1px solid var(--border); background: #0d1117; }
+
+  .filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .filters button {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .filters button.active {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .event {
+    border-left: 3px solid var(--border);
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    background: var(--panel);
+    border-radius: 0 4px 4px 0;
+    animation: fadein 0.25s ease;
+  }
+  @keyframes fadein { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: translateY(0); } }
+  .event .top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .event .agent-tag {
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .event .kind-tag {
+    font-size: 9px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 0 5px;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+  .event .ts {
+    color: var(--muted);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .event .msg { color: var(--text); line-height: 1.4; }
+  .event .mitre {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 10px;
+    color: var(--warn);
+    border: 1px solid var(--warn);
+    padding: 1px 6px;
+    border-radius: 8px;
+  }
+  .event.type-finding { border-left-color: var(--ok); }
+  .event.type-goal_end { border-left-color: var(--accent); }
+  .event.type-delegation, .event.type-handoff { border-left-color: var(--warn); }
+
+  .finding-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--ok);
+    border-radius: 0 4px 4px 0;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+  }
+  .finding-card .agent-tag { font-weight: 700; font-size: 11px; }
+  .finding-card .msg { margin-top: 3px; line-height: 1.4; }
+  .finding-card .ts { color: var(--muted); font-size: 10px; }
+  .finding-card .hint {
+    margin-top: 5px;
+    padding: 5px 7px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 4px;
+    color: #9fd8f2;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .empty {
+    color: var(--muted);
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 12px;
+  }
+
+  #clear-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚔ TezcAI Monitor</h1>
+  <div id="status"><span class="dot"></span><span id="status-text">desconectado</span></div>
+  <div id="url-box">
+    <input id="ws-url" value="ws://localhost:8765" spellcheck="false">
+    <button id="connect-btn">Conectar</button>
+    <button id="clear-btn">Limpiar</button>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="n" id="stat-events">0</div><div class="l">Eventos</div></div>
+  <div class="stat"><div class="n" id="stat-goals">0</div><div class="l">Objetivos</div></div>
+  <div class="stat"><div class="n" id="stat-delegations">0</div><div class="l">Delegaciones</div></div>
+  <div class="stat"><div class="n" id="stat-findings">0</div><div class="l">Hallazgos</div></div>
+  <div class="stat"><div class="n" id="stat-actions">0</div><div class="l">Acciones</div></div>
+</div>
+
+<main>
+  <div class="col" id="feed-col">
+    <h2>Actividad en vivo</h2>
+    <div class="filters" id="type-filters"></div>
+    <div id="feed"><div class="empty">Esperando eventos… conecta el WebSocket y ejecuta <code>python agDiscover.py</code></div></div>
+  </div>
+  <div class="col" id="findings-col">
+    <h2>Hallazgos</h2>
+    <div id="findings"><div class="empty">Sin hallazgos todavía</div></div>
+  </div>
+</main>
+
+<script>
+const AGENT_COLORS = ["#38bdf8", "#f472b6", "#fbbf24", "#818cf8", "#34d399", "#f87171", "#e2e8f0", "#fb923c"];
+const agentColorMap = {};
+function colorFor(agent) {
+  if (!(agent in agentColorMap)) {
+    agentColorMap[agent] = AGENT_COLORS[Object.keys(agentColorMap).length % AGENT_COLORS.length];
+  }
+  return agentColorMap[agent];
+}
+
+const state = {
+  ws: null,
+  events: [],
+  activeType: "all",
+  stats: { events: 0, goals: 0, delegations: 0, findings: 0, actions: 0 },
+};
+
+const feedEl = document.getElementById("feed");
+const findingsEl = document.getElementById("findings");
+const statusEl = document.getElementById("status");
+const statusTextEl = document.getElementById("status-text");
+const typeFiltersEl = document.getElementById("type-filters");
+
+const KNOWN_TYPES = ["phase", "goal_start", "goal_end", "delegation", "handoff", "belief", "action_start", "action_result", "finding", "log"];
+
+function renderFilters() {
+  typeFiltersEl.innerHTML = "";
+  const allBtn = document.createElement("button");
+  allBtn.textContent = "todos";
+  allBtn.className = state.activeType === "all" ? "active" : "";
+  allBtn.onclick = () => { state.activeType = "all"; renderFilters(); renderFeed(); };
+  typeFiltersEl.appendChild(allBtn);
+
+  for (const t of KNOWN_TYPES) {
+    const btn = document.createElement("button");
+    btn.textContent = t;
+    btn.className = state.activeType === t ? "active" : "";
+    btn.onclick = () => { state.activeType = t; renderFilters(); renderFeed(); };
+    typeFiltersEl.appendChild(btn);
+  }
+}
+
+function fmtTime(ts) {
+  try {
+    const d = new Date(ts);
+    return d.toLocaleTimeString("es-ES", { hour12: false }) + "." + String(d.getMilliseconds()).padStart(3, "0");
+  } catch { return ts; }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function fmtMitre(mitre) {
+  if (!mitre) return "";
+  if (typeof mitre === "string") return mitre;
+  return [mitre.tactic, mitre.technique].filter(Boolean).join(" / ");
+}
+
+function eventCard(ev) {
+  const color = colorFor(ev.agent);
+  const mitreHtml = ev.mitre ? `<div class="mitre">${escapeHtml(fmtMitre(ev.mitre))}</div>` : "";
+  return `
+    <div class="event type-${escapeHtml(ev.type)}" style="border-left-color:${color}">
+      <div class="top-row">
+        <span class="agent-tag" style="color:${color}">${escapeHtml(ev.agent)} <span class="kind-tag">${escapeHtml(ev.agent_kind)}</span></span>
+        <span class="ts">${fmtTime(ev.ts)}</span>
+      </div>
+      <div class="msg">${escapeHtml(ev.message)}</div>
+      ${mitreHtml}
+    </div>`;
+}
+
+function renderFeed() {
+  const filtered = state.activeType === "all" ? state.events : state.events.filter(e => e.type === state.activeType);
+  if (filtered.length === 0) {
+    feedEl.innerHTML = `<div class="empty">Sin eventos para este filtro</div>`;
+    return;
+  }
+  feedEl.innerHTML = filtered.slice().reverse().map(eventCard).join("");
+}
+
+function renderFindings() {
+  const findings = state.events.filter(e => e.type === "finding");
+  if (findings.length === 0) {
+    findingsEl.innerHTML = `<div class="empty">Sin hallazgos todavía</div>`;
+    return;
+  }
+  findingsEl.innerHTML = findings.slice().reverse().map(ev => {
+    const color = colorFor(ev.agent);
+    const mitreHtml = ev.mitre ? `<div class="mitre">${escapeHtml(fmtMitre(ev.mitre))}</div>` : "";
+    const hintHtml = ev.detection_hint
+      ? `<div class="hint">🔎 ${escapeHtml(ev.detection_hint)}</div>`
+      : "";
+    return `
+      <div class="finding-card" style="border-left-color:${color}">
+        <div class="agent-tag" style="color:${color}">${escapeHtml(ev.agent)}</div>
+        <div class="msg">${escapeHtml(ev.message)}</div>
+        ${mitreHtml}
+        ${hintHtml}
+        <div class="ts">${fmtTime(ev.ts)}</div>
+      </div>`;
+  }).join("");
+}
+
+function updateStats() {
+  document.getElementById("stat-events").textContent = state.stats.events;
+  document.getElementById("stat-goals").textContent = state.stats.goals;
+  document.getElementById("stat-delegations").textContent = state.stats.delegations;
+  document.getElementById("stat-findings").textContent = state.stats.findings;
+  document.getElementById("stat-actions").textContent = state.stats.actions;
+}
+
+function handleEvent(ev) {
+  state.events.push(ev);
+  state.stats.events++;
+  if (ev.type === "goal_end") state.stats.goals++;
+  if (ev.type === "delegation" || ev.type === "handoff") state.stats.delegations++;
+  if (ev.type === "finding") state.stats.findings++;
+  if (ev.type === "action_result") state.stats.actions++;
+  updateStats();
+  renderFeed();
+  if (ev.type === "finding") renderFindings();
+}
+
+let reconnectTimer = null;
+
+function connect() {
+  const url = document.getElementById("ws-url").value.trim();
+  if (!url) return;
+  if (state.ws) {
+    try { state.ws.close(); } catch {}
+  }
+  clearTimeout(reconnectTimer);
+
+  const ws = new WebSocket(url);
+  state.ws = ws;
+
+  ws.onopen = () => {
+    statusEl.classList.add("connected");
+    statusTextEl.textContent = "conectado — " + url;
+  };
+  ws.onclose = () => {
+    statusEl.classList.remove("connected");
+    statusTextEl.textContent = "desconectado, reintentando…";
+    reconnectTimer = setTimeout(connect, 2000);
+  };
+  ws.onerror = () => { ws.close(); };
+  ws.onmessage = (msg) => {
+    try {
+      const ev = JSON.parse(msg.data);
+      handleEvent(ev);
+    } catch (e) {
+      console.error("Evento inválido", e, msg.data);
+    }
+  };
+}
+
+document.getElementById("connect-btn").onclick = connect;
+document.getElementById("clear-btn").onclick = () => {
+  state.events = [];
+  state.stats = { events: 0, goals: 0, delegations: 0, findings: 0, actions: 0 };
+  updateStats();
+  renderFeed();
+  renderFindings();
+};
+
+renderFilters();
+connect();
+</script>
+</body>
+</html>

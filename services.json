@@ -1,0 +1,335 @@
+[
+  {
+    "ip": "192.168.100.1",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 22,
+          "state": "filtered",
+          "service": "ssh",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 23,
+          "state": "filtered",
+          "service": "telnet",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 53,
+          "state": "open",
+          "service": "domain",
+          "version": "",
+          "product": "",
+          "extrainfo": "generic dns response: NOTIMP"
+        },
+        {
+          "port": 80,
+          "state": "open",
+          "service": "http",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 8022,
+          "state": "filtered",
+          "service": "oa-system",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.102",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 6668,
+          "state": "open",
+          "service": "irc",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.171",
+    "hostname": "",
+    "state": "up",
+    "protocols": {}
+  },
+  {
+    "ip": "192.168.100.187",
+    "hostname": "",
+    "state": "up",
+    "protocols": {}
+  },
+  {
+    "ip": "192.168.100.227",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 443,
+          "state": "open",
+          "service": "http",
+          "version": "1.4.79",
+          "product": "lighttpd",
+          "extrainfo": ""
+        },
+        {
+          "port": 7000,
+          "state": "open",
+          "service": "rtsp",
+          "version": "",
+          "product": "Sonos speaker rtspd",
+          "extrainfo": ""
+        },
+        {
+          "port": 8008,
+          "state": "open",
+          "service": "http",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 8009,
+          "state": "open",
+          "service": "ajp13",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 8443,
+          "state": "open",
+          "service": "https-alt",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 9000,
+          "state": "open",
+          "service": "cslistener",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 10001,
+          "state": "open",
+          "service": "scp-config",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 49152,
+          "state": "open",
+          "service": "unknown",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.23",
+    "hostname": "",
+    "state": "up",
+    "protocols": {}
+  },
+  {
+    "ip": "192.168.100.250",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 5000,
+          "state": "open",
+          "service": "rtsp",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 7000,
+          "state": "open",
+          "service": "rtsp",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.45",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 7,
+          "state": "filtered",
+          "service": "echo",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.5",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 80,
+          "state": "open",
+          "service": "http",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 8888,
+          "state": "open",
+          "service": "soap",
+          "version": "2.7",
+          "product": "gSOAP",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.55",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 1080,
+          "state": "open",
+          "service": "socks5",
+          "version": "",
+          "product": "",
+          "extrainfo": "No authentication; connection failed"
+        },
+        {
+          "port": 8888,
+          "state": "open",
+          "service": "tcpwrapped",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.58",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 6668,
+          "state": "open",
+          "service": "irc",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.59",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 6668,
+          "state": "open",
+          "service": "irc",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.78",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 49152,
+          "state": "open",
+          "service": "",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 62078,
+          "state": "open",
+          "service": "iphone-sync",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  },
+  {
+    "ip": "192.168.100.84",
+    "hostname": "",
+    "state": "up",
+    "protocols": {
+      "tcp": [
+        {
+          "port": 49152,
+          "state": "open",
+          "service": "tcpwrapped",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        },
+        {
+          "port": 62078,
+          "state": "open",
+          "service": "tcpwrapped",
+          "version": "",
+          "product": "",
+          "extrainfo": ""
+        }
+      ]
+    }
+  }
+]

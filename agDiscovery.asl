@@ -4,6 +4,8 @@
 //
 // Descripción: Agente BDI coordinador de reconocimiento.
 //   Orquesta las fases de descubrimiento delegando tareas al agente networkAgR.
+//   Cada paso relevante se reporta con .ev_* (consola + evento JSON por WebSocket);
+//   este agente no conoce ese detalle, solo invoca acciones semánticas.
 //
 // Flujo de ejecución:
 //   1. start -> Solicita identificación de ubicación (whoami)
@@ -22,47 +24,54 @@ fase(reconocimiento).
 
 +!start <-
     .print("===========================================");
-    .print("[agDiscovery] Iniciando fase de reconocimiento");
-    .print("[agDiscovery] Solicitando ubicación en la red...");
+    .ev_phase("reconocimiento");
+    .ev_goal_start("start");
+    .ev_delegation(networkAgR, whoami);
     .send(networkAgR, achieve, who(whoami)).
 
 // ===========================================
 // PLAN: Recibir IP y continuar con escaneo
 // ===========================================
 +!ip(IP)[source(AG)] <-
-    .print("[agDiscovery] Ubicación recibida de", AG);
-    .print("[agDiscovery] IP del agente:", IP);
-    .print("[agDiscovery] Iniciando descubrimiento de red...");
+    .ev_belief(ip, IP, AG);
+    .ev_goal_start("ip");
+    .ev_delegation(networkAgR, network_scanning);
     .send(networkAgR, achieve, net(IP)).
 
 // ===========================================
 // PLAN: Confirmar escaneo y continuar
 // ===========================================
 +!conf(Resultado)[source(AG)] <-
-    .print("[agDiscovery] Escaneo de red completado por", AG);
+    .ev_goal_start("conf");
     if (Resultado == true) {
-        .print("[agDiscovery] Hosts descubiertos. Iniciando detección de OS...");
+        .ev_delegation(networkAgR, os_detection);
         .send(networkAgR, achieve, os_detection(true))
     } else {
-        .print("[agDiscovery] No se encontraron hosts activos")
+        .ev_log("No se encontraron hosts activos")
     }.
 
 // ===========================================
 // BELIEFS: Resultados de escaneos
 // ===========================================
 +scan_completado(Resultado)[source(AG)] <-
-    .print("[agDiscovery] Belief: Escaneo de red =", Resultado).
-
-+services_completado(Resultado)[source(AG)] <-
-    .print("[agDiscovery] Belief: Escaneo de servicios =", Resultado).
+    .ev_belief(scan_completado, Resultado, AG).
 
 +os_completado(Resultado)[source(AG)] <-
-    .print("[agDiscovery] Belief: Detección de OS =", Resultado);
+    .ev_belief(os_completado, Resultado, AG);
     if (Resultado == true) {
-        .print("[agDiscovery] Reconocimiento básico completado");
-        .print("[agDiscovery] Iniciando escaneo de servicios...");
+        .ev_delegation(networkAgR, service_scanning);
         .send(networkAgR, achieve, service_scan("all"))
-    };
+    }.
+
+// ===========================================
+// BELIEF: Escaneo de servicios completado -> fin del reconocimiento.
+// Entrega la fase al siguiente agente BDI del kill chain (acceso por credenciales).
+// ===========================================
++services_completado(Resultado)[source(AG)] <-
+    .ev_belief(services_completado, Resultado, AG);
+    .ev_goal_end("reconocimiento", Resultado);
     .print("===========================================");
-    .print("[agDiscovery] Fase de reconocimiento finalizada");
-    .print("===========================================").
+    if (Resultado == true) {
+        .ev_handoff(agCredAccess, start_cred);
+        .send(agCredAccess, achieve, start_cred)
+    }.

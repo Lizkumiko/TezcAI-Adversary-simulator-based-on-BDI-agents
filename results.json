@@ -1,0 +1,1080 @@
+[
+  {
+    "ip": "192.168.100.1",
+    "os_matches": [
+      {
+        "name": "Linux 2.6.32",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "2.6.X"
+          }
+        ]
+      },
+      {
+        "name": "MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3)",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "router",
+            "vendor": "MikroTik",
+            "osfamily": "RouterOS",
+            "osgen": "7.X"
+          },
+          {
+            "type": "router",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "5.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 3.2 - 4.14",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "3.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 2.6.32 - 3.10",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "2.6.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "3.X"
+          }
+        ]
+      },
+      {
+        "name": "Android 10 - 11 (Linux 4.9 - 4.14)",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "10.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "11.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 5.10 - 5.19",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "5.X"
+          }
+        ]
+      },
+      {
+        "name": "Ubiquiti Dream Machine Pro gateway (Linux 4.19)",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "router",
+            "vendor": "Ubiquiti",
+            "osfamily": "embedded",
+            "osgen": null
+          },
+          {
+            "type": "router",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Oracle VM Server 3.4.2 (Linux 4.1)",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Oracle",
+            "osfamily": "VM Server",
+            "osgen": "3.X"
+          },
+          {
+            "type": "specialized",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 2.6.32 - 2.6.35",
+        "accuracy": "94",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "2.6.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 2.6.32 - 3.5",
+        "accuracy": "94",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "2.6.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "3.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.102",
+    "os_matches": [
+      {
+        "name": "lwIP 2.1.0 - 2.2.0",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.1 - 2.0.3",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.0 or earlier",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "1.4.X"
+          }
+        ]
+      },
+      {
+        "name": "Eve Cam (lwIP 2.1.0 - 2.2.0)",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "webcam",
+            "vendor": "Eve Systems",
+            "osfamily": "embedded",
+            "osgen": null
+          },
+          {
+            "type": "webcam",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "Rigol DSG3060 signal generator",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "2N Helios IP VoIP doorbell",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "2N",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Rigol DS1000Z-E Series oscilloscope",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Rigol DP832 DC power supply",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Paxton Net2Air access control bridge",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "security-misc",
+            "vendor": "Paxton Access",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Yamaha RX-V671 AV receiver",
+        "accuracy": "89",
+        "os_class": [
+          {
+            "type": "media device",
+            "vendor": "Yamaha",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.171",
+    "os_matches": [],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.187",
+    "os_matches": [],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.227",
+    "os_matches": [
+      {
+        "name": "Android 10 - 11 (Linux 4.9 - 4.14)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "10.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "11.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.23",
+    "os_matches": [
+      {
+        "name": "2N Helios IP VoIP doorbell",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "2N",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Illumination DCS-100E lighting controller",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Advanced Illumination",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "AudioControl D3400 network amplifier",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "media device",
+            "vendor": "AudioControl",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "British Gas GS-Z3 data logger",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "storage-misc",
+            "vendor": "British Gas",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Chamberlain myQ garage door opener",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Chamberlain Group",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Daikin DKN Cloud Wi-Fi Adaptor",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Daikin",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Daysequerra M4.2SI radio",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "media device",
+            "vendor": "Daysequerra",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Denver Electronics AC-5000W MK2 camera",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "webcam",
+            "vendor": "Denver Electronics",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Eve Cam (lwIP 2.1.0 - 2.2.0)",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "webcam",
+            "vendor": "Eve Systems",
+            "osfamily": "embedded",
+            "osgen": null
+          },
+          {
+            "type": "webcam",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "Fatek FBs-CBEH PLC Ethernet communication board",
+        "accuracy": "96",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Fatek",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.250",
+    "os_matches": [
+      {
+        "name": "Apple macOS 11 (Big Sur) - 12 (Monterey) (Darwin 20.5.0 - 21.6.0)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "11.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "12.X"
+          }
+        ]
+      },
+      {
+        "name": "Apple macOS 12 (Monterey) (Darwin 21.1.0 - 21.6.0)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "12.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.5",
+    "os_matches": [
+      {
+        "name": "Linux 3.2 - 4.14",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "3.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.55",
+    "os_matches": [
+      {
+        "name": "OpenWrt 21.02 (Linux 5.4)",
+        "accuracy": "98",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "5.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 4.15 - 5.19",
+        "accuracy": "98",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "5.X"
+          }
+        ]
+      },
+      {
+        "name": "OpenWrt 22.03 (Linux 5.10)",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "5.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 5.4 - 5.10",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "5.X"
+          }
+        ]
+      },
+      {
+        "name": "Android 10 - 11 (Linux 4.9 - 4.14)",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "10.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "11.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Android 9 - 11 (Linux 4.9 - 4.14)",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "phone",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "9.X"
+          },
+          {
+            "type": "phone",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "10.X"
+          },
+          {
+            "type": "phone",
+            "vendor": "Google",
+            "osfamily": "Android",
+            "osgen": "11.X"
+          },
+          {
+            "type": "phone",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 2.6.32",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "2.6.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 4.15",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Netgear ReadyNAS 2100 (RAIDiator 4.2.24)",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "storage-misc",
+            "vendor": "Netgear",
+            "osfamily": "RAIDiator",
+            "osgen": "4.X"
+          }
+        ]
+      },
+      {
+        "name": "Linux 3.2 - 4.14",
+        "accuracy": "95",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "3.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Linux",
+            "osfamily": "Linux",
+            "osgen": "4.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.58",
+    "os_matches": [
+      {
+        "name": "lwIP 2.1.0 - 2.2.0",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.1 - 2.0.3",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.0 or earlier",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "1.4.X"
+          }
+        ]
+      },
+      {
+        "name": "Eve Cam (lwIP 2.1.0 - 2.2.0)",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "webcam",
+            "vendor": "Eve Systems",
+            "osfamily": "embedded",
+            "osgen": null
+          },
+          {
+            "type": "webcam",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "Rigol DP832 DC power supply",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Grandstream GXP1105 VoIP phone",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "VoIP phone",
+            "vendor": "Grandstream",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.0",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "1.4.X"
+          }
+        ]
+      },
+      {
+        "name": "Rigol DSG3060 signal generator",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Illumination DCS-100E lighting controller",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Advanced Illumination",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Oracle Virtualbox lwIP NAT bridge",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "bridge",
+            "vendor": "Oracle",
+            "osfamily": "Virtualbox",
+            "osgen": null
+          },
+          {
+            "type": "bridge",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": null
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.59",
+    "os_matches": [
+      {
+        "name": "lwIP 2.1.0 - 2.2.0",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.1 - 2.0.3",
+        "accuracy": "93",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.0 or earlier",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Eve Cam (lwIP 2.1.0 - 2.2.0)",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "webcam",
+            "vendor": "Eve Systems",
+            "osfamily": "embedded",
+            "osgen": null
+          },
+          {
+            "type": "webcam",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "2.X"
+          }
+        ]
+      },
+      {
+        "name": "Rigol DP832 DC power supply",
+        "accuracy": "92",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Grandstream GXP1105 VoIP phone",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "VoIP phone",
+            "vendor": "Grandstream",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "lwIP 1.4.0",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": "1.4.X"
+          }
+        ]
+      },
+      {
+        "name": "Rigol DSG3060 signal generator",
+        "accuracy": "91",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Rigol Technologies",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Advanced Illumination DCS-100E lighting controller",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "specialized",
+            "vendor": "Advanced Illumination",
+            "osfamily": "embedded",
+            "osgen": null
+          }
+        ]
+      },
+      {
+        "name": "Oracle Virtualbox lwIP NAT bridge",
+        "accuracy": "90",
+        "os_class": [
+          {
+            "type": "bridge",
+            "vendor": "Oracle",
+            "osfamily": "Virtualbox",
+            "osgen": null
+          },
+          {
+            "type": "bridge",
+            "vendor": "lwIP",
+            "osfamily": "lwIP",
+            "osgen": null
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.78",
+    "os_matches": [
+      {
+        "name": "Apple macOS 11 (Big Sur) - 13 (Ventura) or iOS 16 (Darwin 20.6.0 - 22.4.0)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "11.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "12.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "13.X"
+          },
+          {
+            "type": "phone",
+            "vendor": "Apple",
+            "osfamily": "iOS",
+            "osgen": "16.X"
+          }
+        ]
+      },
+      {
+        "name": "Apple macOS 14.6 (Sonoma) (Darwin 23.6.0)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "14.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  },
+  {
+    "ip": "192.168.100.82",
+    "os_matches": [
+      {
+        "name": "Apple macOS 11 (Big Sur) - 13 (Ventura) or iOS 16 (Darwin 20.6.0 - 22.4.0)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "11.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "12.X"
+          },
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "13.X"
+          },
+          {
+            "type": "phone",
+            "vendor": "Apple",
+            "osfamily": "iOS",
+            "osgen": "16.X"
+          }
+        ]
+      },
+      {
+        "name": "Apple macOS 14.6 (Sonoma) (Darwin 23.6.0)",
+        "accuracy": "100",
+        "os_class": [
+          {
+            "type": "general purpose",
+            "vendor": "Apple",
+            "osfamily": "macOS",
+            "osgen": "14.X"
+          }
+        ]
+      }
+    ],
+    "os_fingerprint": null
+  }
+]

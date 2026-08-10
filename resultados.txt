@@ -1,1 +1,6 @@
-172.20.15.85
+IP:192.168.100.250
+Netmask:255.255.255.0
+Network:192.168.100.0/24
+Interface:en0
+MAC:7c:d1:ad:39:2c:a1
+Gateway:None
